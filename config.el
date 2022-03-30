@@ -74,3 +74,28 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+;;
+;;
+;;
+;; Exec PATH
+;; Set some bin files, like gopls etc.
+(add-to-list 'exec-path "~/go/bin")
+;;
+;; Set Proxy
+(setq url-proxy-services nil)
+(defun toggle-proxy ()
+  "Toggle proxy for the url.el library."
+  (interactive)
+  (cond
+   (url-proxy-services
+    (message "Turn off URL proxy")
+    (setq url-proxy-services nil))
+   (t
+    (message "Turn on URL proxy")
+    (setq url-proxy-services
+          '(("http" . "http://127.0.0.1:8889")
+            ("https" . "http://127.0.0.1:8889")
+            ("no_proxy" . "0.0.0.0")))
+    (setenv "http_proxy" "http://127.0.0.1:8889")
+    (setenv "https_proxy" "http://127.0.0.1:8889")
+    (setenv "all_proxy" "http://127.0.0.1:8889"))))
