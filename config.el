@@ -79,7 +79,6 @@
 ;;
 ;; Exec PATH
 ;; Set some bin files, like gopls etc.
-(add-to-list 'exec-path "~/go/bin")
 ;;
 ;; Set Proxy
 (setq url-proxy-services nil)
